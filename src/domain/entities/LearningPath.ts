@@ -1,12 +1,12 @@
 import { Language } from "../value-objects/Language";
-import { User } from "./User";
 
 export class LearningPath {
     constructor(
         public readonly id: string,
-        public readonly user: User,
-        public readonly sourceLanguage: Language,
+        public readonly name: string,
+        public readonly description: string,
         public readonly targetLanguage: Language,
+        public readonly isActive: boolean,
         public readonly createdAt: Date = new Date()
     ) {}
 }

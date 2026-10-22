@@ -1,5 +1,5 @@
 export class User {
-  public activeLearningPathId: string | null = null;
+  public activeEnrollments: string[] = [];
 
   constructor(
     public readonly id: string,
