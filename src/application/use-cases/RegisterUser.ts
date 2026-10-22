@@ -36,7 +36,7 @@ export class RegisterUser implements RegisterUserUseCase {
             return Result.fail(passwordValidationResult.getError());
         }
         
-        const existingUser = await this.userRepository.findUserByEmail(email);
+        const existingUser = await this.userRepository.findByEmail(email);
         if (existingUser !== null) {
             return Result.fail({ errorType: "USER_ALREADY_EXISTS" });
         }
@@ -44,7 +44,7 @@ export class RegisterUser implements RegisterUserUseCase {
         
         const hashedPassword = await this.passwordHasher.hash(password);
         const user = new User(randomUUID(), email, hashedPassword);
-        const savedUserResult = await this.userRepository.saveUser(user);
+        const savedUserResult = await this.userRepository.save(user);
         if (savedUserResult.isFail()) {
             return Result.fail(savedUserResult.getError());
         }

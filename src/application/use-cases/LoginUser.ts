@@ -14,7 +14,7 @@ export class LoginUser implements LoginUserUseCase {
     ) {}
 
     private async validateUser(email: string, password: string): Promise<User | null> {
-        const user = await this.userRepository.findUserByEmail(email);
+        const user = await this.userRepository.findByEmail(email);
         if (!user) {
             return null;
         }

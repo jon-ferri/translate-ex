@@ -1,6 +1,4 @@
 export class User {
-  public activeEnrollments: string[] = [];
-
   constructor(
     public readonly id: string,
     public readonly email: string,

@@ -6,6 +6,7 @@ export class Enrollment {
         public readonly userId: string,
         public readonly learningPathId: string,
         public readonly sourceLanguage: Language,
-        public readonly startedAtDate: Date = new Date()
+        public readonly startedAt: Date = new Date(),
+        public readonly isArchived: boolean = false     
     ) {}
 }

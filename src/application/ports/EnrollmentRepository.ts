@@ -4,6 +4,6 @@ import { Result } from "../../shared/Result";
 
 export interface EnrollmentRepository {
   save(enrollment: Enrollment): Promise<Result<void, EnrollmentError>>;
-  findById(id: string): Promise<Result<Enrollment, EnrollmentError>>;
-  findByUserId(userId: string): Promise<Result<Enrollment[], EnrollmentError>>;
+  findById(id: string): Promise<Enrollment | null>;
+  findByUserId(userId: string): Promise<Enrollment[]>;
 }

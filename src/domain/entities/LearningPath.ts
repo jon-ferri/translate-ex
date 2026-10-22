@@ -6,7 +6,7 @@ export class LearningPath {
         public readonly name: string,
         public readonly description: string,
         public readonly targetLanguage: Language,
-        public readonly isActive: boolean,
+        public readonly isActive: boolean = true,
         public readonly createdAt: Date = new Date()
     ) {}
 }
