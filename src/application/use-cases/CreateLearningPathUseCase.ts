@@ -1,11 +1,12 @@
 import { Language } from "../../domain/value-objects/Language";
 import { LearningPathError } from "../../domain/errors/LearningPathError";
 import { Result } from "../../shared/Result";
+import { LearningPath } from "../../domain/entities/LearningPath";
 
 export interface CreateLearningPathUseCase {
     execute(
-        userId: string,
-        sourceLanguage: Language,
+        name: string,
+        description: string,
         targetLanguage: Language
-    ): Promise<Result<string, LearningPathError>>;
+    ): Promise<Result<LearningPath, LearningPathError>>;
 }
