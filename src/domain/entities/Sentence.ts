@@ -1,33 +1,17 @@
-import { Translation } from "./Translation";
-import { Level } from "../value-objects/Level";
-import { Language } from "../value-objects/Language";
-import { randomUUID } from "crypto";
 export class Sentence {
-  public readonly translations: Translation[] = [];
+  private readonly sourceText: string;
+  public readonly id: string;
 
-  constructor(
-    private readonly sourceText: string,
-    public readonly id: string = randomUUID(),
-  ) {}
+  constructor(sourceText: string, id: string) {
+    if (sourceText.trim().length === 0) {
+      throw new Error("Sentence sourceText cannot be empty.");
+    }
 
-  addTranslation(
-    language: Language,
-    text: string,
-    level: Level,
-    variants?: string[],
-    notes?: string[],
-    ideas?: string[],
-  ): void {
-    const translation = new Translation(
-      randomUUID(),
-      this.id,
-      language,
-      text,
-      level,
-      variants,
-      notes,
-      ideas,
-    );
-    this.translations.push(translation);
+    this.sourceText = sourceText.trim();
+    this.id = id;
+  }
+
+  getText(): string {
+    return this.sourceText;
   }
 }
