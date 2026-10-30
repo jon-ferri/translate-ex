@@ -8,7 +8,9 @@ import { InMemoryEnrollmentRepository } from "../../testing/fakes/InMemoryEnroll
 import { User } from "../../domain/entities/User";
 import { LearningPath } from "../../domain/entities/LearningPath";
 import { Enrollment } from "../../domain/entities/Enrollment";
+import { EnrollmentError } from "../../domain/errors/EnrollmentError";
 import { Language } from "../../domain/value-objects/Language";
+import { Result } from "../../shared/Result";
 
 async function setup(maxEnrollmentsPerUser?: number) {
   const userRepository = new InMemoryUserRepository();
@@ -199,4 +201,23 @@ test("ignores archived enrollments when counting the limit", async () => {
   const result = await useCase.execute(user.id, path.id, "en");
 
   assert.equal(result.isOk(), true);
+});
+
+test("reports a persistence failure through Result", async () => {
+  class FailingEnrollmentRepository extends InMemoryEnrollmentRepository {
+    override async save(): Promise<Result<void, EnrollmentError>> {
+      return Result.fail({ errorType: "UNABLE_TO_SAVE_ENROLLMENT" });
+    }
+  }
+
+  const { userRepository, learningPathRepository, user, learningPath } = await setup();
+  const useCase = new EnrollInLearningPath(
+    userRepository,
+    new FailingEnrollmentRepository(),
+    learningPathRepository,
+  );
+
+  const result = await useCase.execute(user.id, learningPath.id, "en");
+
+  assert.deepEqual(result.getError(), { errorType: "UNABLE_TO_SAVE_ENROLLMENT" });
 });
