@@ -1,4 +1,4 @@
-export type EnrollmentError = 
+export type EnrollmentError =
     | { errorType: "USER_NOT_FOUND" }
     | { errorType: "LEARNING_PATH_NOT_FOUND" }
     | { errorType: "ENROLLMENT_NOT_FOUND" }
@@ -8,3 +8,4 @@ export type EnrollmentError =
     | { errorType: "SOURCE_LANGUAGE_NOT_SUPPORTED" }
     | { errorType: "SOURCE_LANGUAGE_MATCHES_TARGET_LANGUAGE" }
     | { errorType: "LEARNING_PATH_NOT_ACTIVE" }
+    | { errorType: "UNABLE_TO_SAVE_ENROLLMENT" }
