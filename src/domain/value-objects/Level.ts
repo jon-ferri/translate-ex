@@ -26,4 +26,13 @@ export class Level {
     this.name = normalizedName;
     this.order = expectedOrder;
   }
+
+  // Builds a Level from untrusted input without throwing.
+  static tryCreate(name: string): Level | null {
+    try {
+      return new Level(name);
+    } catch {
+      return null;
+    }
+  }
 }

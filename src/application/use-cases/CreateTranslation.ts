@@ -25,20 +25,6 @@ export class CreateTranslation implements CreateTranslationUseCase {
     return Result.ok(undefined);
   }
 
-  private validateLanguage(language: Language): Result<void, TranslationError> {
-    if (!language || !language.code || language.code.trim().length === 0) {
-      return Result.fail({ errorType: "INVALID_LANGUAGE" });
-    }
-    return Result.ok(undefined);
-  }
-
-  private validateLevel(level: Level): Result<void, TranslationError> {
-    if (!level || !level.name || level.name.trim().length === 0) {
-      return Result.fail({ errorType: "INVALID_LEVEL" });
-    }
-    return Result.ok(undefined);
-  }
-
   private validateText(text: string): Result<void, TranslationError> {
     if (!text || text.trim().length === 0) {
       return Result.fail({ errorType: "TEXT_CANNOT_BE_EMPTY" });
@@ -51,8 +37,8 @@ export class CreateTranslation implements CreateTranslationUseCase {
 
   async execute(
     sentenceId: string,
-    language: Language,
-    level: Level,
+    languageCode: string,
+    levelName: string,
     text: string,
   ): Promise<Result<Translation, TranslationError | SentenceError>> {
     // Fail fast: validate all input before touching the database.
@@ -61,14 +47,14 @@ export class CreateTranslation implements CreateTranslationUseCase {
       return Result.fail(sentenceIdValidation.getError());
     }
 
-    const languageValidation = this.validateLanguage(language);
-    if (languageValidation.isFail()) {
-      return Result.fail(languageValidation.getError());
+    const language = Language.tryCreate(languageCode);
+    if (language === null) {
+      return Result.fail({ errorType: "INVALID_LANGUAGE" });
     }
 
-    const levelValidation = this.validateLevel(level);
-    if (levelValidation.isFail()) {
-      return Result.fail(levelValidation.getError());
+    const level = Level.tryCreate(levelName);
+    if (level === null) {
+      return Result.fail({ errorType: "INVALID_LEVEL" });
     }
 
     const textValidation = this.validateText(text);

@@ -20,11 +20,12 @@ export class EnrollInLearningPath implements EnrollInLearningPathUseCase {
     async execute(
         userId: string,
         learningPathId: string,
-        sourceLanguage: Language,
+        sourceLanguageCode: string,
     ): Promise<Result<Enrollment, EnrollmentError>> {
-        
-        // Check if the source language is valid and supported
-        if (!sourceLanguage.code) {
+
+        // The source language must be a valid language before enrolling
+        const sourceLanguage = Language.tryCreate(sourceLanguageCode);
+        if (sourceLanguage === null) {
             return Result.fail({ errorType: "INVALID_SOURCE_LANGUAGE" });
         }
 
