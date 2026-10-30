@@ -1,21 +1,23 @@
 export class Language {
   public readonly code: string;
-  public readonly name: string;
 
-  constructor(code: string, name: string) {
+  constructor(code: string) {
     const normalizedCode = typeof code === "string" ? code.trim().toLowerCase() : "";
-    const normalizedName = typeof name === "string" ? name.trim() : "";
 
     if (!/^[a-z]{2,3}$/.test(normalizedCode)) {
       throw new Error(`Language code "${code}" is not a valid 2-3 letter code.`);
     }
 
-    if (normalizedName.length === 0) {
-      throw new Error("Language name cannot be empty.");
-    }
-
     this.code = normalizedCode;
-    this.name = normalizedName;
+  }
+
+  // Builds a Language from untrusted input without throwing.
+  static tryCreate(code: string): Language | null {
+    try {
+      return new Language(code);
+    } catch {
+      return null;
+    }
   }
 
   equals(other: Language): boolean {
@@ -23,6 +25,6 @@ export class Language {
   }
 
   toString(): string {
-    return `${this.name} (${this.code})`;
+    return this.code;
   }
 }
