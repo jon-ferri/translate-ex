@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
-import { Sentence } from "../../domain/entities/Sentence";
-import { SentenceError } from "../../domain/errors/SentenceError";
-import { Result } from "../../shared/Result";
-import { SentenceRepository } from "../ports/SentenceRepository";
+import { Sentence } from "../../../domain/entities/Sentence";
+import { SentenceError } from "../../../domain/errors/SentenceError";
+import { Result } from "../../../shared/Result";
+import { SentenceRepository } from "../../ports/SentenceRepository";
 import { CreateSentenceUseCase } from "./CreateSentenceUseCase";
 
 export class CreateSentence implements CreateSentenceUseCase {

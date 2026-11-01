@@ -1,5 +1,5 @@
-import { TranslationAnswer } from "../../domain/value-objects/TranslationAnswer";
-import { Result } from "../../shared/Result";
+import { TranslationAnswer } from "../../../domain/value-objects/TranslationAnswer";
+import { Result } from "../../../shared/Result";
 
 export interface SubmitTranslationUseCase {
     execute(

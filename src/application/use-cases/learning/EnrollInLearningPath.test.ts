@@ -2,15 +2,15 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { EnrollInLearningPath } from "./EnrollInLearningPath";
-import { InMemoryUserRepository } from "../../testing/fakes/InMemoryUserRepository";
-import { InMemoryLearningPathRepository } from "../../testing/fakes/InMemoryLearningPathRepository";
-import { InMemoryEnrollmentRepository } from "../../testing/fakes/InMemoryEnrollmentRepository";
-import { User } from "../../domain/entities/User";
-import { LearningPath } from "../../domain/entities/LearningPath";
-import { Enrollment } from "../../domain/entities/Enrollment";
-import { EnrollmentError } from "../../domain/errors/EnrollmentError";
-import { Language } from "../../domain/value-objects/Language";
-import { Result } from "../../shared/Result";
+import { InMemoryUserRepository } from "../../../testing/fakes/InMemoryUserRepository";
+import { InMemoryLearningPathRepository } from "../../../testing/fakes/InMemoryLearningPathRepository";
+import { InMemoryEnrollmentRepository } from "../../../testing/fakes/InMemoryEnrollmentRepository";
+import { User } from "../../../domain/entities/User";
+import { LearningPath } from "../../../domain/entities/LearningPath";
+import { Enrollment } from "../../../domain/entities/Enrollment";
+import { EnrollmentError } from "../../../domain/errors/EnrollmentError";
+import { Language } from "../../../domain/value-objects/Language";
+import { Result } from "../../../shared/Result";
 
 async function setup(maxEnrollmentsPerUser?: number) {
   const userRepository = new InMemoryUserRepository();

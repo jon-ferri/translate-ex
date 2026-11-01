@@ -1,9 +1,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { CreateSentence } from "./CreateSentence";
-import { InMemorySentenceRepository } from "../../testing/fakes/InMemorySentenceRepository";
-import { SentenceError } from "../../domain/errors/SentenceError";
-import { Result } from "../../shared/Result";
+import { InMemorySentenceRepository } from "../../../testing/fakes/InMemorySentenceRepository";
+import { SentenceError } from "../../../domain/errors/SentenceError";
+import { Result } from "../../../shared/Result";
 
 test("creates and stores a sentence", async () => {
   const repository = new InMemorySentenceRepository();

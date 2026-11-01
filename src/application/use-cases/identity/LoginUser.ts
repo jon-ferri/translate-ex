@@ -1,10 +1,10 @@
-import { UserRepository } from "../ports/UserRepository";
-import { PasswordHasher } from "../ports/PasswordHasher";
-import { TokenGenerator } from "../ports/TokenGenerator";
+import { UserRepository } from "../../ports/UserRepository";
+import { PasswordHasher } from "../../ports/PasswordHasher";
+import { TokenGenerator } from "../../ports/TokenGenerator";
 import { LoginUserUseCase } from "./LoginUserUseCase";
-import { AuthError } from "../../domain/errors/AuthError";
-import { Result } from "../../shared/Result";
-import { User } from "../../domain/entities/User";
+import { AuthError } from "../../../domain/errors/AuthError";
+import { Result } from "../../../shared/Result";
+import { User } from "../../../domain/entities/User";
 
 export class LoginUser implements LoginUserUseCase {
     constructor(
