@@ -1,12 +1,12 @@
-import { EnrollmentError } from '../../domain/errors/EnrollmentError';
-import { Enrollment } from '../../domain/entities/Enrollment';
-import { Language } from '../../domain/value-objects/Language';
-import { Result } from '../../shared/Result';
+import { EnrollmentError } from '../../../domain/errors/EnrollmentError';
+import { Enrollment } from '../../../domain/entities/Enrollment';
+import { Language } from '../../../domain/value-objects/Language';
+import { Result } from '../../../shared/Result';
 import { EnrollInLearningPathUseCase } from './EnrollInLearningPathUseCase';
 import { randomUUID } from 'crypto';
-import { UserRepository } from '../ports/UserRepository';
-import { EnrollmentRepository } from '../ports/EnrollmentRepository';
-import { LearningPathRepository } from '../ports/LearningPathRepository';
+import { UserRepository } from '../../ports/UserRepository';
+import { EnrollmentRepository } from '../../ports/EnrollmentRepository';
+import { LearningPathRepository } from '../../ports/LearningPathRepository';
 
 export class EnrollInLearningPath implements EnrollInLearningPathUseCase {
     constructor(

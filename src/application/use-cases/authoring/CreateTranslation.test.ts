@@ -2,12 +2,12 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { CreateTranslation } from "./CreateTranslation";
-import { InMemorySentenceRepository } from "../../testing/fakes/InMemorySentenceRepository";
-import { InMemoryTranslationRepository } from "../../testing/fakes/InMemoryTranslationRepository";
-import { Sentence } from "../../domain/entities/Sentence";
-import { SentenceError } from "../../domain/errors/SentenceError";
-import { TranslationError } from "../../domain/errors/TranslationError";
-import { Result } from "../../shared/Result";
+import { InMemorySentenceRepository } from "../../../testing/fakes/InMemorySentenceRepository";
+import { InMemoryTranslationRepository } from "../../../testing/fakes/InMemoryTranslationRepository";
+import { Sentence } from "../../../domain/entities/Sentence";
+import { SentenceError } from "../../../domain/errors/SentenceError";
+import { TranslationError } from "../../../domain/errors/TranslationError";
+import { Result } from "../../../shared/Result";
 
 async function setup() {
   const sentenceRepository = new InMemorySentenceRepository();

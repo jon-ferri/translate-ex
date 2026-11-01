@@ -1,9 +1,9 @@
 import { RegisterUserUseCase } from "./RegisterUserUseCase";
-import { UserRepository } from "../ports/UserRepository";
-import { UserError } from "../../domain/errors/UserError";
-import { Result } from "../../shared/Result";
-import { PasswordHasher } from "../ports/PasswordHasher";
-import { User } from "../../domain/entities/User";
+import { UserRepository } from "../../ports/UserRepository";
+import { UserError } from "../../../domain/errors/UserError";
+import { Result } from "../../../shared/Result";
+import { PasswordHasher } from "../../ports/PasswordHasher";
+import { User } from "../../../domain/entities/User";
 import { randomUUID } from "crypto";
 
 export class RegisterUser implements RegisterUserUseCase {

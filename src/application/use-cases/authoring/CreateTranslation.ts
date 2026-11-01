@@ -1,13 +1,13 @@
 import { randomUUID } from "node:crypto";
 import { CreateTranslationUseCase } from "./CreateTranslationUseCase";
-import { TranslationRepository } from "../ports/TranslationRepository";
-import { SentenceRepository } from "../ports/SentenceRepository";
-import { Result } from "../../shared/Result";
-import { Translation } from "../../domain/entities/Translation";
-import { TranslationError } from "../../domain/errors/TranslationError";
-import { SentenceError } from "../../domain/errors/SentenceError";
-import { Language } from "../../domain/value-objects/Language";
-import { Level } from "../../domain/value-objects/Level";
+import { TranslationRepository } from "../../ports/TranslationRepository";
+import { SentenceRepository } from "../../ports/SentenceRepository";
+import { Result } from "../../../shared/Result";
+import { Translation } from "../../../domain/entities/Translation";
+import { TranslationError } from "../../../domain/errors/TranslationError";
+import { SentenceError } from "../../../domain/errors/SentenceError";
+import { Language } from "../../../domain/value-objects/Language";
+import { Level } from "../../../domain/value-objects/Level";
 
 // A translation is a sentence: one thousand characters is a generous limit.
 const MAX_TEXT_LENGTH = 1000;
