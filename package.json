@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "pretest": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
     "test": "tsc && node --test 'dist/**/*.test.js'"
   },
   "keywords": [],
